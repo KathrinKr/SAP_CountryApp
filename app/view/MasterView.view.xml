@@ -1,0 +1,33 @@
+<mvc:View
+	xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:semantic="sap.m.semantic"
+	controllerName="countriesCountryList.controller.rootView"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	
+	<semantic:MasterPage title="{i18n>titleMaster}" id="MasterPage">
+		<List mode="SingleSelectMaster" selectionChange="onListPressed" items="{countryModel>/countries}">
+			<ObjectListItem
+				title="{countryModel>name}"
+				number="{countryModel>detailInfo/area}"
+				numberUnit="{countryModel>detailInfo/areaUnit}">
+				<attributes>
+					<ObjectAttribute text="{countryModel>short}"/>
+				</attributes>
+				
+				<firstStatus>
+					<ObjectStatus
+						text="{
+							path: 'countryModel>detailInfo/HumanDevelopmentIndex', 
+							formatter: '.formatter.statusText'
+						}"
+						state="{
+							path: 'countryModel>detailInfo/HumanDevelopmentIndex', 
+							formatter: '.formatter.statusText'
+						}" />
+				</firstStatus>
+			</ObjectListItem>
+		</List>
+	</semantic:MasterPage>
+</mvc:View>
